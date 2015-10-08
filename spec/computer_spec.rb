@@ -2,8 +2,8 @@ require 'computer'
 
 describe Computer do
 
-  it "expect computer_weapon to contain a string" do
-    expect(subject.computer_weapon).to be_an_instance_of(String)
+  it "can choose either rock, paper or scissors" do
+    expect(subject.comp_choice).to eq(:rock).or eq(:paper).or eq(:scissors)
   end
-
+  
 end

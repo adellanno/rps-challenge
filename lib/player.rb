@@ -1,6 +1,6 @@
 class Player
 
-  attr_reader :options, :player_weapon
+  attr_reader :player_weapon
 
   def initialize
     @options = [:rock, :paper, :scissors]
