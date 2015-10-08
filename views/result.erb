@@ -7,7 +7,7 @@
 <body id = "result_body">
   <div class ="font-size">
     <p> Computer chose <%= @computer.choice %> </p>
-    <p> The result is: <% @game.play(@player, @computer) %> </p>
+    <p> The result is: <%= @game.play(@player, @computer) %> </p>
 
     <form action="/game">
         <input type="submit" value="Click here to play again!">
