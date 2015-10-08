@@ -1,19 +1,17 @@
 class Player
 
-  attr_reader :player_weapon
+  attr_reader :weapon
 
   def initialize
     @options = [:rock, :paper, :scissors]
-    @player_weapon = ''
   end
 
-  def choose_weapon(choice)
-    if options.include? choice.to_sym
-      @player_weapon = choice
+  def choice(choice)
+    if @options.include? choice.to_sym
+      @weapon = choice.to_sym
     else
       "Please enter either rock, paper or scissors"
     end
   end
-
 
 end

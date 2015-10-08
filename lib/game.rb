@@ -3,20 +3,33 @@ require_relative 'player'
 
 class Game
 
-  def player_wins(player, computer)
-    return "Player wins" if player.player_weapon == "paper" && computer.computer_weapon == "rock"
-    return "Player wins" if player.player_weapon == "scissors" && computer.computer_weapon  == "paper"
-    return "Player wins" if player.player_weapon == "rock" && computer.computer_weapon  == "scissors"
+  RULES = {
+    rock: {rock: :draw, paper: :loser, scissors: :winner},
+    paper: {rock: :winner, paper: :draw, scissors: :loser},
+    scissors: {rock: :loser, paper: :winner, scissors: :draw}
+  }
+
+  def play (player, computer)
+    @winner = RULES[player.weapon][computer.choice]
+    if @winner == :draw
+      draw
+    elsif @winner == :winner
+      winner
+    else
+      loser
+    end
   end
 
-  def computer_wins(player, computer)
-    return "Computer wins" if player.player_weapon == "rock" && computer.computer_weapon == "paper"
-    return "Computer wins" if player.player_weapon  == "paper" && computer.computer_weapon == "scissors"
-    return "Computer wins" if player.player_weapon  == "scissors" && computer.computer_weapon == "rock"
+  def winner
+    "Player wins"
   end
 
-  def draw(player, computer)
-    return "Draw" if player.player_weapon == computer.computer_weapon
+  def loser
+    "Computer wins"
+  end
+
+  def draw
+    "Draw"
   end
 
 end
