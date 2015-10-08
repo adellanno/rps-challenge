@@ -15,16 +15,20 @@ class RPSWeb < Sinatra::Base
   end
 
   get '/game' do
-    @name = params[:name]
+    session[:name] = params[:name]
     erb :game
+  end
+
+  post '/game' do
+    session[:choice] = params[:choice].to_sym
+    redirect '/result'
   end
 
   get '/result' do
     @game = Game.new
     @player = Player.new
     @computer = Computer.new
-    $choice = params[:choice]
-    $choiceTest = $choice.to_s
+    @player.choice(session[:choice])
     erb :result
   end
 
